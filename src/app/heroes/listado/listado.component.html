@@ -1,0 +1,22 @@
+<p>Listado de Heros</p>
+
+<div *ngIf = "heroeBorrado; else noBorrado"> <!-- //este es un if, que si el resultado el TRUE se mietra el codigo de html, si es false no se muestra anada. En este caso, si hay un heroeBorrado se mostrara el codigo y si no hay nada,  no aparece. Aca se da cuetna que el string vacio cuando no hay un heroeborrado lo toma como un false. Lo que esta despues del ";" es lo que hace con el elsa, es decir cuando no se cumple la condicion inicial indicada. En ese ELSE le doy un referecia LOCAL que luego le voy a indicar de que se trata, para que la ejecute en caso de no cumplirse la condicion inicial, esto se hace en el NG-TEMPLATE indicado con el #NOBORRADO -->
+    <h3>Heroe Borrado: <small>{{heroeBorrado}}</small> </h3>
+</div>
+
+<<ng-template #noBorrado> <!-- //aca hay una referencia local que viene del ngIf ELSE -->
+    <h3> No ha borrado nada</h3>
+</ng-template>
+
+
+<button (click)="borrarHeroe()"> borrar </button>
+
+<ul>
+    <li *ngFor="let heroe of heroes; let i = index"> <!-- esto es como un ciclo FOR OF que recorre el array heroes. Tambien genere el i que es el index para ponerle el numero adelante. Como empieza en 0 le sumo 1 -->
+        {{i + 1}} - {{heroe}}
+    </li>
+
+</ul>
+
+
+
